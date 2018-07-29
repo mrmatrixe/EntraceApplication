@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace EntranceApplication
 {
-    public partial class Form1 : Form
+    public partial class frmTemplate : Form
     {
-        public Form1()
+        public frmTemplate()
         {
             InitializeComponent();
         }
@@ -20,6 +20,11 @@ namespace EntranceApplication
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Test");
+        }
+
+        private void frmTemplate_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
