@@ -16,7 +16,7 @@ namespace EntranceApplication
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmTemplate());
+            Application.Run(new Form1());
         }
     }
 }

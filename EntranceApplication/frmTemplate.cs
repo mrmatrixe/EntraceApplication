@@ -21,10 +21,5 @@ namespace EntranceApplication
         {
             MessageBox.Show("Test");
         }
-
-        private void frmTemplate_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
