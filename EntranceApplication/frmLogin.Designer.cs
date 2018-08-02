@@ -32,6 +32,7 @@
             System.Windows.Forms.Label idLabel;
             System.Windows.Forms.Label firstNameLabel;
             System.Windows.Forms.Label lastNameLabel;
+            System.Windows.Forms.Label userTypeLabel;
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,9 +45,12 @@
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
+            this.tableAdapterManager = new EntranceApplication.EntraceDBDataSetTableAdapters.TableAdapterManager();
+            this.userTypeTextBox = new System.Windows.Forms.TextBox();
             idLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
             lastNameLabel = new System.Windows.Forms.Label();
+            userTypeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.entraceDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblUsersBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -77,6 +81,15 @@
             lastNameLabel.Size = new System.Drawing.Size(73, 16);
             lastNameLabel.TabIndex = 12;
             lastNameLabel.Text = "Last Name:";
+            // 
+            // userTypeLabel
+            // 
+            userTypeLabel.AutoSize = true;
+            userTypeLabel.Location = new System.Drawing.Point(810, 215);
+            userTypeLabel.Name = "userTypeLabel";
+            userTypeLabel.Size = new System.Drawing.Size(71, 16);
+            userTypeLabel.TabIndex = 14;
+            userTypeLabel.Text = "User Type:";
             // 
             // textBox1
             // 
@@ -168,12 +181,31 @@
             this.lastNameTextBox.Size = new System.Drawing.Size(100, 23);
             this.lastNameTextBox.TabIndex = 13;
             // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.SecurityListTableAdapter = null;
+            this.tableAdapterManager.tblEntranceTableAdapter = null;
+            this.tableAdapterManager.tblUnitsTableAdapter = null;
+            this.tableAdapterManager.tblUsersTableAdapter = this.tblUsersTableAdapter;
+            this.tableAdapterManager.UpdateOrder = EntranceApplication.EntraceDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // userTypeTextBox
+            // 
+            this.userTypeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tblUsersBindingSource, "UserType", true));
+            this.userTypeTextBox.Location = new System.Drawing.Point(887, 212);
+            this.userTypeTextBox.Name = "userTypeTextBox";
+            this.userTypeTextBox.Size = new System.Drawing.Size(100, 23);
+            this.userTypeTextBox.TabIndex = 15;
+            // 
             // frmLogin
             // 
             this.AcceptButton = this.button2;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(376, 266);
+            this.ClientSize = new System.Drawing.Size(380, 273);
+            this.Controls.Add(userTypeLabel);
+            this.Controls.Add(this.userTypeTextBox);
             this.Controls.Add(lastNameLabel);
             this.Controls.Add(this.lastNameTextBox);
             this.Controls.Add(firstNameLabel);
@@ -202,6 +234,8 @@
             this.Controls.SetChildIndex(firstNameLabel, 0);
             this.Controls.SetChildIndex(this.lastNameTextBox, 0);
             this.Controls.SetChildIndex(lastNameLabel, 0);
+            this.Controls.SetChildIndex(this.userTypeTextBox, 0);
+            this.Controls.SetChildIndex(userTypeLabel, 0);
             ((System.ComponentModel.ISupportInitialize)(this.entraceDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblUsersBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -223,5 +257,7 @@
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.TextBox firstNameTextBox;
         private System.Windows.Forms.TextBox lastNameTextBox;
+        private EntraceDBDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.TextBox userTypeTextBox;
     }
 }

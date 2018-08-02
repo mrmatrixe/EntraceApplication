@@ -243,10 +243,10 @@ FROM            tblUsers</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="EntranceGridTableAdapter" GeneratorDataComponentClassName="EntranceGridTableAdapter" Name="EntranceGrid" UserDataComponentName="EntranceGridTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="EntraceDBConnectionString (Settings)" DbObjectName="dbo.tblEntrance" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="EntraceDBConnectionString (Settings)" DbObjectName="dbo.tblEntrance" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        tblEntrance.Id, tblEntrance.LogType, tblEntrance.Date, tblEntrance.Reason, tblEntrance.Time, tblUsers.FirstName + ' ' + tblUsers.LastName AS FullName
+                    <CommandText>SELECT        tblEntrance.Id, tblEntrance.LogType, tblEntrance.Date, tblEntrance.Reason, tblEntrance.Time, tblUsers.FirstName + ' ' + tblUsers.LastName AS FullName, tblEntrance.UserID
 FROM            tblEntrance INNER JOIN
                          tblUsers ON tblEntrance.UserID = tblUsers.Id</CommandText>
                     <Parameters />
@@ -261,6 +261,7 @@ FROM            tblEntrance INNER JOIN
               <Mapping SourceColumn="Reason" DataSetColumn="Reason" />
               <Mapping SourceColumn="Time" DataSetColumn="Time" />
               <Mapping SourceColumn="FullName" DataSetColumn="FullName" />
+              <Mapping SourceColumn="UserID" DataSetColumn="UserID" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -272,7 +273,7 @@ FROM            tblEntrance INNER JOIN
   <xs:element name="EntraceDBDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="EntraceDBDataSet" msprop:Generator_UserDSName="EntraceDBDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="tblEntrance" msprop:Generator_TableClassName="tblEntranceDataTable" msprop:Generator_TableVarName="tabletblEntrance" msprop:Generator_TablePropName="tblEntrance" msprop:Generator_RowDeletingName="tblEntranceRowDeleting" msprop:Generator_RowChangingName="tblEntranceRowChanging" msprop:Generator_RowEvHandlerName="tblEntranceRowChangeEventHandler" msprop:Generator_RowDeletedName="tblEntranceRowDeleted" msprop:Generator_UserTableName="tblEntrance" msprop:Generator_RowChangedName="tblEntranceRowChanged" msprop:Generator_RowEvArgName="tblEntranceRowChangeEvent" msprop:Generator_RowClassName="tblEntranceRow">
+        <xs:element name="tblEntrance" msprop:Generator_TableClassName="tblEntranceDataTable" msprop:Generator_TableVarName="tabletblEntrance" msprop:Generator_RowChangedName="tblEntranceRowChanged" msprop:Generator_TablePropName="tblEntrance" msprop:Generator_RowDeletingName="tblEntranceRowDeleting" msprop:Generator_RowChangingName="tblEntranceRowChanging" msprop:Generator_RowEvHandlerName="tblEntranceRowChangeEventHandler" msprop:Generator_RowDeletedName="tblEntranceRowDeleted" msprop:Generator_RowClassName="tblEntranceRow" msprop:Generator_UserTableName="tblEntrance" msprop:Generator_RowEvArgName="tblEntranceRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -308,7 +309,7 @@ FROM            tblEntrance INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="tblUnits" msprop:Generator_TableClassName="tblUnitsDataTable" msprop:Generator_TableVarName="tabletblUnits" msprop:Generator_TablePropName="tblUnits" msprop:Generator_RowDeletingName="tblUnitsRowDeleting" msprop:Generator_RowChangingName="tblUnitsRowChanging" msprop:Generator_RowEvHandlerName="tblUnitsRowChangeEventHandler" msprop:Generator_RowDeletedName="tblUnitsRowDeleted" msprop:Generator_UserTableName="tblUnits" msprop:Generator_RowChangedName="tblUnitsRowChanged" msprop:Generator_RowEvArgName="tblUnitsRowChangeEvent" msprop:Generator_RowClassName="tblUnitsRow">
+        <xs:element name="tblUnits" msprop:Generator_TableClassName="tblUnitsDataTable" msprop:Generator_TableVarName="tabletblUnits" msprop:Generator_RowChangedName="tblUnitsRowChanged" msprop:Generator_TablePropName="tblUnits" msprop:Generator_RowDeletingName="tblUnitsRowDeleting" msprop:Generator_RowChangingName="tblUnitsRowChanging" msprop:Generator_RowEvHandlerName="tblUnitsRowChangeEventHandler" msprop:Generator_RowDeletedName="tblUnitsRowDeleted" msprop:Generator_RowClassName="tblUnitsRow" msprop:Generator_UserTableName="tblUnits" msprop:Generator_RowEvArgName="tblUnitsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -322,7 +323,7 @@ FROM            tblEntrance INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="tblUsers" msprop:Generator_TableClassName="tblUsersDataTable" msprop:Generator_TableVarName="tabletblUsers" msprop:Generator_TablePropName="tblUsers" msprop:Generator_RowDeletingName="tblUsersRowDeleting" msprop:Generator_RowChangingName="tblUsersRowChanging" msprop:Generator_RowEvHandlerName="tblUsersRowChangeEventHandler" msprop:Generator_RowDeletedName="tblUsersRowDeleted" msprop:Generator_UserTableName="tblUsers" msprop:Generator_RowChangedName="tblUsersRowChanged" msprop:Generator_RowEvArgName="tblUsersRowChangeEvent" msprop:Generator_RowClassName="tblUsersRow">
+        <xs:element name="tblUsers" msprop:Generator_TableClassName="tblUsersDataTable" msprop:Generator_TableVarName="tabletblUsers" msprop:Generator_RowChangedName="tblUsersRowChanged" msprop:Generator_TablePropName="tblUsers" msprop:Generator_RowDeletingName="tblUsersRowDeleting" msprop:Generator_RowChangingName="tblUsersRowChanging" msprop:Generator_RowEvHandlerName="tblUsersRowChangeEventHandler" msprop:Generator_RowDeletedName="tblUsersRowDeleted" msprop:Generator_RowClassName="tblUsersRow" msprop:Generator_UserTableName="tblUsers" msprop:Generator_RowEvArgName="tblUsersRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -372,7 +373,7 @@ FROM            tblEntrance INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SecurityList" msprop:Generator_TableClassName="SecurityListDataTable" msprop:Generator_TableVarName="tableSecurityList" msprop:Generator_RowChangedName="SecurityListRowChanged" msprop:Generator_TablePropName="SecurityList" msprop:Generator_RowDeletingName="SecurityListRowDeleting" msprop:Generator_RowChangingName="SecurityListRowChanging" msprop:Generator_RowEvHandlerName="SecurityListRowChangeEventHandler" msprop:Generator_RowDeletedName="SecurityListRowDeleted" msprop:Generator_RowClassName="SecurityListRow" msprop:Generator_UserTableName="SecurityList" msprop:Generator_RowEvArgName="SecurityListRowChangeEvent">
+        <xs:element name="SecurityList" msprop:Generator_TableClassName="SecurityListDataTable" msprop:Generator_TableVarName="tableSecurityList" msprop:Generator_TablePropName="SecurityList" msprop:Generator_RowDeletingName="SecurityListRowDeleting" msprop:Generator_RowChangingName="SecurityListRowChanging" msprop:Generator_RowEvHandlerName="SecurityListRowChangeEventHandler" msprop:Generator_RowDeletedName="SecurityListRowDeleted" msprop:Generator_UserTableName="SecurityList" msprop:Generator_RowChangedName="SecurityListRowChanged" msprop:Generator_RowEvArgName="SecurityListRowChangeEvent" msprop:Generator_RowClassName="SecurityListRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -386,7 +387,7 @@ FROM            tblEntrance INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="EntranceGrid" msprop:Generator_TableClassName="EntranceGridDataTable" msprop:Generator_TableVarName="tableEntranceGrid" msprop:Generator_RowChangedName="EntranceGridRowChanged" msprop:Generator_TablePropName="EntranceGrid" msprop:Generator_RowDeletingName="EntranceGridRowDeleting" msprop:Generator_RowChangingName="EntranceGridRowChanging" msprop:Generator_RowEvHandlerName="EntranceGridRowChangeEventHandler" msprop:Generator_RowDeletedName="EntranceGridRowDeleted" msprop:Generator_RowClassName="EntranceGridRow" msprop:Generator_UserTableName="EntranceGrid" msprop:Generator_RowEvArgName="EntranceGridRowChangeEvent">
+        <xs:element name="EntranceGrid" msprop:Generator_TableClassName="EntranceGridDataTable" msprop:Generator_TableVarName="tableEntranceGrid" msprop:Generator_TablePropName="EntranceGrid" msprop:Generator_RowDeletingName="EntranceGridRowDeleting" msprop:Generator_RowChangingName="EntranceGridRowChanging" msprop:Generator_RowEvHandlerName="EntranceGridRowChangeEventHandler" msprop:Generator_RowDeletedName="EntranceGridRowDeleted" msprop:Generator_UserTableName="EntranceGrid" msprop:Generator_RowChangedName="EntranceGridRowChanged" msprop:Generator_RowEvArgName="EntranceGridRowChangeEvent" msprop:Generator_RowClassName="EntranceGridRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -425,6 +426,7 @@ FROM            tblEntrance INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="UserID" msprop:Generator_ColumnVarNameInTable="columnUserID" msprop:Generator_ColumnPropNameInRow="UserID" msprop:Generator_ColumnPropNameInTable="UserIDColumn" msprop:Generator_UserColumnName="UserID" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -453,9 +455,11 @@ FROM            tblEntrance INNER JOIN
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_tblEntrance_ToTable" msdata:parent="tblUsers" msdata:child="tblEntrance" msdata:parentkey="Id" msdata:childkey="UserID" msprop:Generator_UserChildTable="tblEntrance" msprop:Generator_ChildPropName="GettblEntranceRows" msprop:Generator_UserRelationName="FK_tblEntrance_ToTable" msprop:Generator_RelationVarName="relationFK_tblEntrance_ToTable" msprop:Generator_UserParentTable="tblUsers" msprop:Generator_ParentPropName="tblUsersRow" />
-      <msdata:Relationship name="FK_tblUsers_ToTable" msdata:parent="tblUnits" msdata:child="tblUsers" msdata:parentkey="Id" msdata:childkey="UnitID" msprop:Generator_UserChildTable="tblUsers" msprop:Generator_ChildPropName="GettblUsersRows" msprop:Generator_UserRelationName="FK_tblUsers_ToTable" msprop:Generator_ParentPropName="tblUnitsRow" msprop:Generator_RelationVarName="relationFK_tblUsers_ToTable" msprop:Generator_UserParentTable="tblUnits" />
-      <msdata:Relationship name="FK_tblEntrance_ToTable1" msdata:parent="SecurityList" msdata:child="tblEntrance" msdata:parentkey="Id" msdata:childkey="UserID" msprop:Generator_UserChildTable="tblEntrance" msprop:Generator_ChildPropName="GettblEntranceRows" msprop:Generator_UserRelationName="FK_tblEntrance_ToTable1" msprop:Generator_ParentPropName="SecurityListRow" msprop:Generator_RelationVarName="relationFK_tblEntrance_ToTable1" msprop:Generator_UserParentTable="SecurityList" />
+      <msdata:Relationship name="FK_tblEntrance_ToTable" msdata:parent="tblUsers" msdata:child="tblEntrance" msdata:parentkey="Id" msdata:childkey="UserID" msprop:Generator_UserChildTable="tblEntrance" msprop:Generator_ChildPropName="GettblEntranceRows" msprop:Generator_UserRelationName="FK_tblEntrance_ToTable" msprop:Generator_ParentPropName="tblUsersRow" msprop:Generator_RelationVarName="relationFK_tblEntrance_ToTable" msprop:Generator_UserParentTable="tblUsers" />
+      <msdata:Relationship name="FK_tblUsers_ToTable" msdata:parent="tblUnits" msdata:child="tblUsers" msdata:parentkey="Id" msdata:childkey="UnitID" msprop:Generator_UserChildTable="tblUsers" msprop:Generator_ChildPropName="GettblUsersRows" msprop:Generator_UserRelationName="FK_tblUsers_ToTable" msprop:Generator_RelationVarName="relationFK_tblUsers_ToTable" msprop:Generator_UserParentTable="tblUnits" msprop:Generator_ParentPropName="tblUnitsRow" />
+      <msdata:Relationship name="FK_tblEntrance_ToTable1" msdata:parent="SecurityList" msdata:child="tblEntrance" msdata:parentkey="Id" msdata:childkey="UserID" msprop:Generator_UserChildTable="tblEntrance" msprop:Generator_ChildPropName="GettblEntranceRows" msprop:Generator_UserRelationName="FK_tblEntrance_ToTable1" msprop:Generator_RelationVarName="relationFK_tblEntrance_ToTable1" msprop:Generator_UserParentTable="SecurityList" msprop:Generator_ParentPropName="SecurityListRow" />
+      <msdata:Relationship name="FK_tblEntrance_ToTable2" msdata:parent="tblUsers" msdata:child="EntranceGrid" msdata:parentkey="Id" msdata:childkey="UserID" msprop:Generator_UserChildTable="EntranceGrid" msprop:Generator_ChildPropName="GetEntranceGridRows" msprop:Generator_UserRelationName="FK_tblEntrance_ToTable2" msprop:Generator_ParentPropName="tblUsersRow" msprop:Generator_RelationVarName="relationFK_tblEntrance_ToTable2" msprop:Generator_UserParentTable="tblUsers" />
+      <msdata:Relationship name="FK_tblEntrance_ToTable3" msdata:parent="SecurityList" msdata:child="EntranceGrid" msdata:parentkey="Id" msdata:childkey="UserID" msprop:Generator_UserChildTable="EntranceGrid" msprop:Generator_ChildPropName="GetEntranceGridRows" msprop:Generator_UserRelationName="FK_tblEntrance_ToTable3" msprop:Generator_ParentPropName="SecurityListRow" msprop:Generator_RelationVarName="relationFK_tblEntrance_ToTable3" msprop:Generator_UserParentTable="SecurityList" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

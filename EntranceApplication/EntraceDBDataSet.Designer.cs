@@ -40,6 +40,10 @@ namespace EntranceApplication {
         
         private global::System.Data.DataRelation relationFK_tblEntrance_ToTable1;
         
+        private global::System.Data.DataRelation relationFK_tblEntrance_ToTable2;
+        
+        private global::System.Data.DataRelation relationFK_tblEntrance_ToTable3;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -299,6 +303,8 @@ namespace EntranceApplication {
             this.relationFK_tblEntrance_ToTable = this.Relations["FK_tblEntrance_ToTable"];
             this.relationFK_tblUsers_ToTable = this.Relations["FK_tblUsers_ToTable"];
             this.relationFK_tblEntrance_ToTable1 = this.Relations["FK_tblEntrance_ToTable1"];
+            this.relationFK_tblEntrance_ToTable2 = this.Relations["FK_tblEntrance_ToTable2"];
+            this.relationFK_tblEntrance_ToTable3 = this.Relations["FK_tblEntrance_ToTable3"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -331,6 +337,14 @@ namespace EntranceApplication {
                         this.tableSecurityList.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tabletblEntrance.UserIDColumn}, false);
             this.Relations.Add(this.relationFK_tblEntrance_ToTable1);
+            this.relationFK_tblEntrance_ToTable2 = new global::System.Data.DataRelation("FK_tblEntrance_ToTable2", new global::System.Data.DataColumn[] {
+                        this.tabletblUsers.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableEntranceGrid.UserIDColumn}, false);
+            this.Relations.Add(this.relationFK_tblEntrance_ToTable2);
+            this.relationFK_tblEntrance_ToTable3 = new global::System.Data.DataRelation("FK_tblEntrance_ToTable3", new global::System.Data.DataColumn[] {
+                        this.tableSecurityList.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableEntranceGrid.UserIDColumn}, false);
+            this.Relations.Add(this.relationFK_tblEntrance_ToTable3);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1728,6 +1742,8 @@ namespace EntranceApplication {
             
             private global::System.Data.DataColumn columnFullName;
             
+            private global::System.Data.DataColumn columnUserID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public EntranceGridDataTable() {
@@ -1811,6 +1827,14 @@ namespace EntranceApplication {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn UserIDColumn {
+                get {
+                    return this.columnUserID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1846,7 +1870,7 @@ namespace EntranceApplication {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EntranceGridRow AddEntranceGridRow(string LogType, string Date, string Reason, string Time, string FullName) {
+            public EntranceGridRow AddEntranceGridRow(string LogType, string Date, string Reason, string Time, string FullName, tblUsersRow parenttblUsersRowByFK_tblEntrance_ToTable2) {
                 EntranceGridRow rowEntranceGridRow = ((EntranceGridRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1854,7 +1878,11 @@ namespace EntranceApplication {
                         Date,
                         Reason,
                         Time,
-                        FullName};
+                        FullName,
+                        null};
+                if ((parenttblUsersRowByFK_tblEntrance_ToTable2 != null)) {
+                    columnValuesArray[6] = parenttblUsersRowByFK_tblEntrance_ToTable2[0];
+                }
                 rowEntranceGridRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEntranceGridRow);
                 return rowEntranceGridRow;
@@ -1890,6 +1918,7 @@ namespace EntranceApplication {
                 this.columnReason = base.Columns["Reason"];
                 this.columnTime = base.Columns["Time"];
                 this.columnFullName = base.Columns["FullName"];
+                this.columnUserID = base.Columns["UserID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1907,6 +1936,8 @@ namespace EntranceApplication {
                 base.Columns.Add(this.columnTime);
                 this.columnFullName = new global::System.Data.DataColumn("FullName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFullName);
+                this.columnUserID = new global::System.Data.DataColumn("UserID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUserID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -1925,6 +1956,7 @@ namespace EntranceApplication {
                 this.columnTime.MaxLength = 50;
                 this.columnFullName.ReadOnly = true;
                 this.columnFullName.MaxLength = 101;
+                this.columnUserID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2325,6 +2357,17 @@ namespace EntranceApplication {
                     return ((tblEntranceRow[])(base.GetChildRows(this.Table.ChildRelations["FK_tblEntrance_ToTable"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public EntranceGridRow[] GetEntranceGridRows() {
+                if ((this.Table.ChildRelations["FK_tblEntrance_ToTable2"] == null)) {
+                    return new EntranceGridRow[0];
+                }
+                else {
+                    return ((EntranceGridRow[])(base.GetChildRows(this.Table.ChildRelations["FK_tblEntrance_ToTable2"])));
+                }
+            }
         }
         
         /// <summary>
@@ -2388,6 +2431,17 @@ namespace EntranceApplication {
                 }
                 else {
                     return ((tblEntranceRow[])(base.GetChildRows(this.Table.ChildRelations["FK_tblEntrance_ToTable1"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public EntranceGridRow[] GetEntranceGridRows() {
+                if ((this.Table.ChildRelations["FK_tblEntrance_ToTable3"] == null)) {
+                    return new EntranceGridRow[0];
+                }
+                else {
+                    return ((EntranceGridRow[])(base.GetChildRows(this.Table.ChildRelations["FK_tblEntrance_ToTable3"])));
                 }
             }
         }
@@ -2474,6 +2528,39 @@ namespace EntranceApplication {
                 }
                 set {
                     this[this.tableEntranceGrid.FullNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int UserID {
+                get {
+                    return ((int)(this[this.tableEntranceGrid.UserIDColumn]));
+                }
+                set {
+                    this[this.tableEntranceGrid.UserIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public tblUsersRow tblUsersRow {
+                get {
+                    return ((tblUsersRow)(this.GetParentRow(this.Table.ParentRelations["FK_tblEntrance_ToTable2"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_tblEntrance_ToTable2"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SecurityListRow SecurityListRow {
+                get {
+                    return ((SecurityListRow)(this.GetParentRow(this.Table.ParentRelations["FK_tblEntrance_ToTable3"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_tblEntrance_ToTable3"]);
                 }
             }
             
@@ -4294,6 +4381,7 @@ SELECT Id, FirstName, LastName, NationalCode, UserType, Username, Password, Unit
             tableMapping.ColumnMappings.Add("Reason", "Reason");
             tableMapping.ColumnMappings.Add("Time", "Time");
             tableMapping.ColumnMappings.Add("FullName", "FullName");
+            tableMapping.ColumnMappings.Add("UserID", "UserID");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -4310,7 +4398,7 @@ SELECT Id, FirstName, LastName, NationalCode, UserType, Username, Password, Unit
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        tblEntrance.Id, tblEntrance.LogType, tblEntrance.Date, tblEntrance.Reason, tblEntrance.Time, tblUsers.FirstName + ' ' + tblUsers.LastName AS FullName
+            this._commandCollection[0].CommandText = @"SELECT        tblEntrance.Id, tblEntrance.LogType, tblEntrance.Date, tblEntrance.Reason, tblEntrance.Time, tblUsers.FirstName + ' ' + tblUsers.LastName AS FullName, tblEntrance.UserID
 FROM            tblEntrance INNER JOIN
                          tblUsers ON tblEntrance.UserID = tblUsers.Id";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;

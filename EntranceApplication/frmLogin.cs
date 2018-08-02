@@ -38,8 +38,17 @@ namespace EntranceApplication
                 tblUsersBindingSource.Filter = "Username='" + textBox1.Text + "' AND Password='" + textBox2.Text + "'";
                 if (tblUsersBindingSource.Count > 0)
                 {
-                    this.Hide();
-                    new frmMain(firstNameTextBox.Text + " " + lastNameTextBox.Text).Show();
+                    Variable.UserID = idTextBox.Text;
+                    if (userTypeTextBox.Text == "کارمند")
+                    {
+                        this.Hide();
+                        new frmEmployee(firstNameTextBox.Text + " " + lastNameTextBox.Text).Show();
+                    }
+                    else
+                    {
+                        this.Hide();
+                        new frmMain(firstNameTextBox.Text + " " + lastNameTextBox.Text).Show();
+                    }
                 }
                 else
                 {
